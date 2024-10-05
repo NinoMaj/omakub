@@ -6,25 +6,45 @@ alias lta='lt -a'
 alias ff="fzf --preview 'batcat --style=numbers --color=always {}'"
 alias fd='fdfind'
 alias cd='z'
+alias sd="say done || say fail"
 
 # Directories
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias dl="cd ~/Downloads"
+alias dev="cd ~/Developer"
 
 # Tools
 alias n='nvim'
 alias g='git'
 alias d='docker'
-alias r='rails'
 alias bat='batcat'
 alias lzg='lazygit'
 alias lzd='lazydocker'
+alias nr="npm run"
+alias findnm="find . -type d -name node_modules -prune"
+alias rmrfnm="find . -type d -name node_modules -prune -exec rm -rf {} \;"
 
 # Git
-alias gcm='git commit -m'
-alias gcam='git commit -a -m'
-alias gcad='git commit -a --amend'
+alias loc="git ls-files | xargs cat | wc -l"
+alias gco="git checkout"
+alias gs="git status -sb"
+alias glo="git log --oneline"
+alias gcane="git commit --amend --no-edit"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gcmnv="git commit --no-verify -m"
+alias gcfu="git commit --fixup"
+alias gria="git rebase -i --autosquash"
+alias gl="git pull"
+alias ga="git add"
+alias gaa="git add -A"
+alias gap="git add --patch"
+alias gpoh="git push origin HEAD"
+alias gpohnv="git push origin HEAD --no-verify"
+alias commit-count="git rev-list HEAD --count"
+alias gr1="git reset HEAD~1"
 
 # Compression
 compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
@@ -35,4 +55,9 @@ webm2mp4() {
   input_file="$1"
   output_file="${input_file%.webm}.mp4"
   ffmpeg -i "$input_file" -c:v libx264 -preset slow -crf 22 -c:a aac -b:a 192k "$output_file"
+}
+
+# Create and cd into new dir
+take () {
+  mkdir "$1" && cd "$1"
 }
