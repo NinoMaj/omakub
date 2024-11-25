@@ -61,3 +61,7 @@ webm2mp4() {
 take () {
   mkdir "$1" && cd "$1"
 }
+
+# copy/paste
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
